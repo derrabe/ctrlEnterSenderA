@@ -13,8 +13,10 @@ export const perplexityAdapter: SiteAdapter = {
   },
 
   // Perplexity also wires key handlers high up; follow Claude pattern.
+  // Note: Cmd/Ctrl+Enter is handled natively by the site, so we use 'none'
+  // to avoid interfering. We only intercept Enter for newline.
   listenerTarget: 'window',
-  nativeSendKey: 'enter',
+  nativeSendKey: 'none',
 
   isEditable(element: Element): boolean {
     if (!element) return false;
